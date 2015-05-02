@@ -107,11 +107,130 @@
 - 色度（Shade）：纯色和不同比例的褐色混合产生的颜色，色彩的纯度
 - 色彩（Tint）：纯色和白色混合产生的颜色，一种色相（Hue）加入不同比例的白色能产生不同的颜色
 
-<div style="position:fixed; left:0;top:0; height:200px; width:200px; background:red;">f</div>
-
 ##色彩属性
 
+- 色彩属性能影响到一个物体的视觉效果。
+- 饱和度高的笔饱和度低的物体更能吸引人的眼球，明度较高的物体也有类似效果。
+- 有些色彩比其他色彩更有突出：
+
+比如：
+
+1. 红色（最突出）
+2. 蓝色
+3. 绿色
+4. 橙色
+5. 黄色（最不突出）
+
+- 例如红色视觉很突出，需要吸引用户注意力或者涉及重要操作的时候，可以这么用。
 
 
+##色轮
+- 反应不同色彩之间的关系，帮助挑选首选色、搭配色
+- **牛顿证明，饱和度最高的色彩位于色轮外侧，中性色位于中间。**
+- 色轮大多提供大概，而非最终方案。
+- 在线色轮 [Kuler](https://color.adobe.com/zh/)    [Colorhexa.com](Colorhexa.com)
+
+
+##配色方案
+
+###近似色
+- 色轮上位置相近的颜色。确定首选色之后，选择用来搭配的第二、第三种颜色。
+ 
+- 近似色与首选色接近而不同，能与之和谐存在。
+
+![近似色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-1.jpg)
+
+###单色
+- 确定首选色之后，调整色度、色调和色彩（让其与不同比例黑色、白色、灰色混合）
+ 
+![单色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-2.jpg)
+
+
+###三色
+- 色轮上相互等距离的三种颜色
+
+![三色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-3.jpg)
+
+
+###互补色
+- 色轮中心对称的两边的颜色就是互补色。
+- 两种色彩相互抵消，色盲用户无法分辨。
+- 如果要考虑色盲人群，不要使用证号处于相反位置的色彩（偏一点就好）
+
+![互补色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-4.jpg)
+
+
+###复合色
+- 确定首选色之后，挑选一个互补色，再加上一个与首选色同色系的色彩。
+- 容易实现，提供明显反差，不容易被滥用。
+
+![复合色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-5.jpg)
+
+
+###中性色
+- 仅靠黑白灰
+- 掌握好了能弄得高大上
+
+![中性色](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-6.jpg)
+
+###自定义
+- 抛开上面的配色规则，不遵循传统，使用冒险和激进的方案来装饰
+
+![自定义](http://image.uisdc.com/wp-content/uploads/2014/11/kuler-7.jpg)
+
+>要提高可读性，保证即使色盲用户也能获取网页内容。
+将颜色饱和度降到最低，如果仍然能够看到网站最重要的内容，看清图形和图像，就好了。
+
+
+##色调、色度和色彩
+
+###配色方案最重要的因素
+
+- 仔细审视网站。如何引导用户
+- 哪些更重要，哪些点击，哪个页面有限访问。确定视觉的强化。合理调配颜色的色彩、色度和色调。
+
+对于“有行为的元素”，例如按钮，最好有着微小过渡来调整不同行为。
+
+![元素行为](http://image.uisdc.com/wp-content/uploads/2014/11/blue-buttons.jpg)
+
+同一个颜色的四种色调对应四种行为normal、hover、pressed、disabled。
+
+可以从首选色`#00aeef`开始，加入一定黑色（Shade），配出Hover的用色`#0077a1`。按下的时候应该加入更多黑色使其更深，按钮禁用的时候，让其浅一些（色调或色彩更浅一些，通过加入白色或灰色）
+
+
+##中性色
+
+###让网页有对比更平衡
+
+- 中性色可以和任何配色方案搭配。
+- 增加灰度会提高信息层次。
+- 有了层次视觉就有焦点，用户不会分心。
+
+![中性色](http://image.uisdc.com/wp-content/uploads/2014/11/digital-ocean.jpg)
+
+##选择多少色彩合适
+
+- 通常主次两种色调就够用
+- 也可以通过调整色调、色彩和色度来灵活创造更多可能性
+
+>一般而言，色彩比例控制位 6：3：1 最为合适。
+色彩比例均匀的话会使色彩之间相互冲突，造成主次不分。
+6：3：1指的是主色调覆盖六成的网页和UI，辅助色占据三成，剩下一成用装饰色或者强调色，让网站或者UI更加舒适。
+
+Best Buy就是典型，蓝色为主色调，黄色辅助色，红色强调。
+
+![Best Buy](http://image.uisdc.com/wp-content/uploads/2014/11/best-buy.jpg)
+
+下面的例子色彩太过散乱，色彩比例不明显，对比混乱。
+
+![inovativa](http://image.uisdc.com/wp-content/uploads/2014/11/inovativa.jpg)
+
+这个网站配色灾难性的。典型反例。
+
+![灾难](http://image.uisdc.com/wp-content/uploads/2014/11/hell.jpg)
+
+
+
+网站链接：[Thinkful网站配色完全学习指南](http://www.uisdc.com/thinkful-color-theory-basics-2)
 
 
