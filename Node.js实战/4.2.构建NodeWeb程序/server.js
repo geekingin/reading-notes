@@ -20,6 +20,17 @@ var server = http.createServer(function(req, res) {
 			break;
 		case 'GET':
 			var body = items.join('\n');
+			var html='<!DOCTYPE html>'
+					+'<html lang="en">'
+					+'<head>'
+					+'<meta charset="UTF-8">'
+					+'<title>Document</title>'
+					+'</head>'
+					+'<body>'
+
+			html+=items.join('\n');
+			html+='</body>'
+				+'</html>'
 			res.setHeader('Content-Length',Buffer.byteLength(body));		//这里Buffer.byteLength是字节长度， body.length得出的时字符长度。两者在对待多字节字符（比如汉字）的时候会不相等
 			res.setHeader('Content-Type','text/plain;charset="utf-8"');		
 			res.end(body);

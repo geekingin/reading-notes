@@ -38,21 +38,23 @@ function upload(req,res){
 	}
 	var form=new formidable.IncomingForm();
 	console.log(form.uploadDir);
-	form.on('field',function(field,value){
-		console.log(field,value);
-	});
+	// form.on('field',function(field,value){
+	// 	console.log(field,value);
+	// });
 	form.on('file',function(name,file){
 		console.log(name);
 		files.push([name,file]);
+		// res.end(JSON.stringify(file));
 	});
 	form.on('end',function(){
 		res.setHeader('Content-Type','text/plain');
 		res.write('upload complete');
 		res.end(util.inspect(files));
-	}).on('progress',function(bytesReceived,bytesExpected){
-		var percent=Math.floor(bytesReceived/bytesExpected*100);
-		console.log(percent);
-	});
+	})
+	// .on('progress',function(bytesReceived,bytesExpected){
+	// 	var percent=Math.floor(bytesReceived/bytesExpected*100);
+	// 	console.log(percent);
+	// });
 	form.parse(req);
 }
 
