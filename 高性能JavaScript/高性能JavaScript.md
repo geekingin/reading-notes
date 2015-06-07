@@ -1,6 +1,8 @@
 ##脚本位置
 现代浏览器允许并行下载JavaScript，JS文件之间不会互相影响，但是下载和执行过程仍会阻断其他资源的下载（如图片）。
 
+并且是并行下载，阻塞执行。
+
 ##动态脚本
 通过DOM，可以引用、穿件、删除、移动\<script>标签。
 	
@@ -223,3 +225,97 @@ js的定时器的 时间 参数表示在多长时间之后将回调函数 **加�
 
 
 
+##ajax
+
+
+- 速度：jsonp > json > xml > html
+
+###手动ajax
+
+	var req=new XMLHttp	Request();
+	req.onreadystaechange=function(){
+		if (req.readystate==4){
+			var data=req.responseText;
+			
+			var headers=req.getAllResponseHeaders();
+		}
+	}
+	
+	req.open('get',url,true);
+	req.setRequestHeader('X-request-With','XMLHttpRequest');
+	req.send(null);
+
+###过期头 （expires）
+
+
+
+###避免双重求值
+
+eval Function() setTimeout setInterval
+
+
+
+###延迟加载
+
+复写现有的函数，将执行过的代码、只需要执行一次的代码给移除（通过复写函数的方法）。
+
+	function addHandler(target,eventType,handler){
+	
+		//特性检测，只需要检测一次
+		if (target.addEventListener){			//DOM2type
+			//复写现有函数
+			addHanlder=function(target.eventType,handler){
+				target.addEventListener(eventType,handler,false);
+			}
+		}else{									//IE
+			addHandler=function(target.eventType,handler){
+				target.attachEvent("on"+eventType,handler);
+			}
+		}
+		
+		
+		//调用新函数
+		addHandler(target,eventType,handler);
+	}
+	
+	
+	
+	
+##单词
+
+- plus oprator					：加操作符
+- plus-equal oprator			：加等操作符
+- activation objects			：活动对象
+- Agile JavaScript build proces：敏捷 JavaScript 构建过程
+- data formats					：数据格式
+- data transmission				：数据传输
+- performance					：性能
+- algorithm						：算法
+- conditionals					：条件语句
+- loops							：循环
+- recursion						：迭代
+- alternation					：分支
+- backtracking					：回溯
+- performance					：性能
+- flow							：文档流
+- anonymous function			：匿名函数
+- expires						：过期时间
+- CSS selector					：css选择器
+- array joining					：数组项链接
+- array processing				：数组处理
+- array items					：数组项
+- double evaluation				：双重求值
+- for-in loops					：for in 循环
+- atomic grouping 				：原子组
+- backreferences				：反向引用
+- emulatiing atomic groups		：模拟原子组
+- runaway backtracking			：回溯失控
+- batching DOM changes			：批量修改DOM
+- beacons						：信标
+- benchmarking					：基准测试
+- bitmasking					：位掩码
+- bitwise operators				：位运算符
+- blocking scripts				：阻塞脚本
+- Browser Object Model			：浏览器对象模型
+- bracket notation				：括号表示法
+- dot notation					：点号表示法
