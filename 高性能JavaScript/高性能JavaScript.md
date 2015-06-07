@@ -2,15 +2,17 @@
 现代浏览器允许并行下载JavaScript，JS文件之间不会互相影响，但是下载和执行过程仍会阻断其他资源的下载（如图片）。
 
 ##动态脚本
-通过DOM，可以引用、穿件、删除、移动<script>标签。
+通过DOM，可以引用、穿件、删除、移动\<script>标签。
 	
 	var script = document.createElement('script');
 	script.src='file.js';
 	document.body.appendChild(script);
 	//or
 	document.getL
+	
 
 ##CSS本身是并行加载的
+
 
 ##无阻塞加载
 - loadScript
@@ -113,6 +115,111 @@ querySelectorAll(XXX)系列返回的都是静态的NodeList（static NodeList）
 
 区分元素节点（HTML标签）和其他节点的DOM属性
 
-属性名		|		被替换的属性
-----		|		-------
-children	|		childNodes
+属性名					|	被替换的属性
+----					|	-------
+children				|	childNodes
+childElementCount		|	childNodes.length
+firstElementChild		|	firstChild
+lastElementChild		|	lastChild
+nextElementSibling		|	nextSibling
+previousElementSibling	|	previousSibilng
+
+前者不单是我们所需要的，而且性能更优
+
+##重绘与重排
+
+###重排
+- 添加或删除可见的DOM元素
+- 元素位置改变
+- 元素尺寸改变（外边距、内边距、边框厚度、宽度、高度）
+- 内容改变，如：文本改变或图片被另一个不同尺寸的图片替代
+- 页面渲染器初始化
+- 浏览器窗口尺寸改变
+
+###重排队列
+
+一般浏览器会队列化修改并批量执行来优化重排过程。然后使用以下属性，可能会（不知不觉）强制刷新队列。
+
+- offsetTop、offsetLeft、offsetWidth、offsetHeight
+- scrollTop、scrollLeft、scrollWidth、scrollHeight
+- clientTop、clientLeft、clientWidth、clientHeight
+- getComputedStyle（）
+
+以上属性需要‘最新‘的布局信息，所以会强制浏览器渲染队列中“待处理变化”的元素重排。
+
+避免在修改样式的时候使用以上属性，从而使得浏览器可以优化性能。
+
+###批量修改DOM
+将所有修改操作在 fragment document 里面进行操作，之后再将 fragment的内容添加到document里面。  
+
+值得注意的是，当附加 fragment 到文档中时，被添加的实际上是 fragment 的子结点，而不是 fragment 本身。
+
+
+> 对于 display：none 的元素，修改属性并不会引起重排
+
+> 对于 position:absolute/fixed 的元素，修改属性只会引起自身的重排。
+
+“离线“操作 DOM
+
+##循环
+
+forEach是 for 循环效率的 1/8
+
+##条件语句
+
+switch比if-else更快：
+
+1. 一方面因为语言优化，对switch采用了branch table（分支表）优化。
+
+2. 另一方面比较值使用全等操作符，不会造成性能损耗
+
+特定switch结构时，可以转换为查找表。
+
+
+##递归
+
+### 递归转迭代
+
+###记忆化
+
+斐波那契
+
+##字符串链接
+
+	//性能低
+	str+=’one‘+'two' 
+	
+	//性能高
+	str=str+'one'+'two'
+	
+原因是第一个会创建一个临时字符串 ’onetwo‘
+
+##正则表达式
+
+《正则表达式手册》(《regular expression cookbook》)
+
+
+
+
+##浏览器线程
+
+浏览器执行JS和更新用户界面（重绘、重排）的进程是同一个。  
+其工作基于一个简单的队列系统，任务会被保存到队列中直到进程空闲。  
+队列中的任务要么是js代码，要么是UI更新（重绘与重排）。
+
+
+###定时器
+js的定时器的 时间 参数表示在多长时间之后将回调函数 **加入 队列**，而不是多长时间后 **执行**
+
+如果队列中已经存在一个 setInterval 创建的任务，那么后续任务不会被添加到队列之中。
+
+###分割任务
+
+其基本原理是讲 不需要顺序操作，也不需要同步操作的 数据，用setTimeout进行分割。
+
+例如对于数组的迭代，将大任务分割成小的任务，然后用setTimeout串联
+
+###web workers！
+
+
+
